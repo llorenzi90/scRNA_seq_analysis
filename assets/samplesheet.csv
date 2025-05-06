@@ -1,0 +1,4 @@
+sample,fastq_1,fastq_2,protocol,expected_cells
+sampleA_rep1,data/test/sampleA_R1.fastq.gz,data/test/sampleA_R2.fastq.gz,10xV3,5000
+sampleB_ctrl,data/test/sampleB_R1.fastq.gz,,DropSeq,3000
+sampleC_T1,data/test/sampleC_R1.fastq.gz,data/test/sampleC_R2.fastq.gz,10xV3,8000 

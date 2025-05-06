@@ -11,7 +11,7 @@ This document outlines the planned technical steps to develop a shareable and si
         *   Basic `main.nf` and `nextflow.config` files are created.
         *   Directory structure (`bin/`, `conf/`, `modules/`) is established.
 
-*   ⚫ Task 2: Define Input Samplesheet Specification
+*   ✅ Task 2: Define Input Samplesheet Specification
     *   **Description**: Define the format for the input `samplesheet.csv` (e.g., columns: `sample_id`, `fastq_1`, `fastq_2`, `expected_cells`, `protocol_type`). Document this format within the README or a dedicated documentation file.
     *   **Validation**:
         *   A clear, documented specification for `samplesheet.csv` exists.

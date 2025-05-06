@@ -9,7 +9,7 @@ To develop a shareable and simple single-cell RNA-seq analysis pipeline, applica
 Based on current best practices and requirements, we propose the following technology stack:
 
 *   **Workflow Management**: **Nextflow**
-    *   *Rationale*: Excellent for creating scalable and reproducible bioinformatics pipelines. It manages dependencies, parallelizes tasks, and supports various execution environments. The existing [nf-core/scrnaseq pipeline](https://github.com/nf-core/scrnaseq) is a testament to its capabilities in this domain.
+    *   *Rationale*: Excellent for creating scalable and reproducible bioinformatics pipelines. It manages dependencies, parallelizes tasks, and supports various execution environments. The existing [nf-core/scrnaseq pipeline](r) is a testament to its capabilities in this domain.
 *   **Programming Language**: **Python**
     *   *Rationale*: Widely used in bioinformatics for data manipulation, analysis, and custom scripting. Libraries like Scanpy, AnnData, Pandas, and NumPy are invaluable for scRNA-seq analysis. Python scripts can be seamlessly integrated as processes within a Nextflow workflow.
 *   **Version Control**: **Git**
@@ -39,6 +39,41 @@ We can draw significant inspiration from established, best-practice pipelines li
     *   Identification of marker genes for clusters.
     *   Cell type annotation (optional, can be manual or automated).
     *   The AnnData (`.h5ad`) format is highly recommended for storing and manipulating scRNA-seq data in Python (e.g., with Scanpy).
+
+## Input Samplesheet Format
+
+To use the pipeline, you need to provide a samplesheet in CSV (Comma Separated Values) format. This file, typically named `samplesheet.csv`, details the samples to be analyzed and their associated FASTQ files.
+
+The samplesheet must have a header row with the following column names:
+
+*   `sample`: (Mandatory) A unique identifier for each sample (e.g., `sample1`, `mouse_LN_treatmentA`).
+    *   *Type*: String
+    *   *Example*: `my_sample_id`
+*   `fastq_1`: (Mandatory) The path to the forward (R1) FASTQ file.
+    *   *Type*: Path (String)
+    *   *Example*: `path/to/your/sample_R1.fastq.gz`
+*   `fastq_2`: (Optional) The path to the reverse (R2) FASTQ file for paired-end reads. Leave this column empty if your data is single-end.
+    *   *Type*: Path (String)
+    *   *Example*: `path/to/your/sample_R2.fastq.gz` or empty
+*   `protocol`: (Mandatory) A string indicating the scRNA-seq protocol used. This information helps the pipeline apply appropriate parameters for analysis.
+    *   *Type*: String
+    *   *Examples*: `10xV2`, `10xV3`, `DropSeq`, `SmartSeq2`
+*   `expected_cells`: (Optional, Recommended) An integer representing the estimated number of cells for the sample. This can be used by certain tools (e.g., for UMI-based error correction or initial QC).
+    *   *Type*: Integer
+    *   *Example*: `5000`
+
+### Example `samplesheet.csv`
+
+The following is an example of what `assets/samplesheet.csv` might contain:
+
+```csv
+sample,fastq_1,fastq_2,protocol,expected_cells
+sampleA_rep1,data/test/sampleA_R1.fastq.gz,data/test/sampleA_R2.fastq.gz,10xV3,5000
+sampleB_ctrl,data/test/sampleB_R1.fastq.gz,,DropSeq,3000
+sampleC_T1,data/test/sampleC_R1.fastq.gz,data/test/sampleC_R2.fastq.gz,10xV3,8000
+```
+
+Make sure the file paths in `fastq_1` and `fastq_2` are correct and accessible by the Nextflow pipeline.
 
 ## Implementation Strategy
 
