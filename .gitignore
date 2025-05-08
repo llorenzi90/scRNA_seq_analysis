@@ -6,7 +6,7 @@ venv/
 .nextflow/
 work/
 results/
-nextflow  # Nextflow executable itself
+nextflow
 
 # Nextflow reports
 *report.html
