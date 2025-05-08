@@ -17,7 +17,7 @@ This document outlines the planned technical steps to develop a shareable and si
         *   A clear, documented specification for `samplesheet.csv` exists.
         *   An example `samplesheet.csv` file is created adhering to the specification.
 
-*   ⚫ Task 3: Implement Basic FASTQ Input Reading in Nextflow
+*   ✅ Task 3: Implement Basic FASTQ Input Reading in Nextflow
     *   **Description**: Develop a Nextflow process in `main.nf` or a dedicated module to:
         1.  Read the `samplesheet.csv`.
         2.  Validate the samplesheet structure and existence of FASTQ files.

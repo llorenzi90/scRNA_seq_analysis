@@ -1,0 +1,2 @@
+# Python dependencies for scRNA_seq_analysis pipeline scripts
+# Add libraries like scanpy, pandas, matplotlib, etc., as needed. 

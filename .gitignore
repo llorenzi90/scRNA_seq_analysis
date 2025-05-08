@@ -1,0 +1,14 @@
+# Python virtual environment
+venv/
+
+# Nextflow files
+.nextflow.log*
+.nextflow/
+work/
+results/
+nextflow  # Nextflow executable itself
+
+# Nextflow reports
+*report.html
+*trace.txt
+*timeline.html 
